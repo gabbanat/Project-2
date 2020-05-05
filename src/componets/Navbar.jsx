@@ -4,7 +4,8 @@ MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggle
 MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem
 } from "mdbreact";
 import { BrowserRouter as Router } from 'react-router-dom';
-import {Link} from "react-router-dom"
+
+import {Link, withRouter} from "react-router-dom"
 
 class NavbarPage extends Component {
 state = {
@@ -15,7 +16,19 @@ toggleCollapse = () => {
   this.setState({ isOpen: !this.state.isOpen });
 }
 
+search = (e) => {
+
+  console.log(this.props)
+  if(this.props.location.pathname != "/Games"){
+    this.props.history.push("/Games")
+  }
+  this.props.search(e)
+}
+
+
+
 render() {
+  console.log(this)
   return (
     
       <MDBNavbar light expand="sm">
@@ -51,7 +64,7 @@ render() {
             <MDBNavItem>
               <MDBFormInline waves>
                 <div className="md-form my-0">
-                  <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
+                  <input className="form-control mr-sm-2" type="text" onChange={this.search} placeholder="Search" aria-label="Search" />
                 </div>
               </MDBFormInline>
             </MDBNavItem>
@@ -63,4 +76,4 @@ render() {
   }
 }
 
-export default NavbarPage;
+export default withRouter(NavbarPage);

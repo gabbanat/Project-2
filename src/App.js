@@ -11,27 +11,55 @@ import Axios from "axios"
 
 class App extends Component {
   state = {
-    stores: []
+    stores: [],
+    allGames: [],
+    games : []
   }
   componentDidMount(){
     console.log(this)
     Axios.get("https://www.cheapshark.com/api/1.0/stores").then(res => {
     this.setState({
-      stores: res.data
+      stores: res.data,
+      
     })
-  })}
+  })
+  Axios.get(
+    "https://www.cheapshark.com/api/1.0/deals?upperPrice=15"
+  ).then((result) => {
+    console.log(result);
+    this.setState({ 
+      games: result.data,
+      allGames: result.data
+
+    
+    });
+  });
+
+}
+  search = (e) => {
+    console.log(e.target.value)
+    let filterGames = this.state.allGames.filter(eachGame => {
+      
+      return eachGame.title.toUpperCase().includes(e.target.value.toUpperCase())
+    })
+    console.log(filterGames.length)
+    this.setState({
+
+      games: filterGames
+    })
+  }
   render() {
     return (
       <div className="App">
       
-      <Navbar/>
+      <Navbar search = {this.search}/>
 
        <Switch>
        <Route
               exact
               path="/Games"
               render={props => (
-                <Games {...props}  />
+                <Games {...props} games={this.state.games} />
               )}
               />
         <Route
