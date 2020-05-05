@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import stores from "../stores";
+import {MDBCard} from "mdbreact"
 console.log(stores);
 
 class Deal extends Component {
@@ -25,9 +26,12 @@ class Deal extends Component {
   render() {
     console.log(this);
     return (
-      <div>
+      <div className = "deal">
+      <MDBCard>
+      
         <h4>{this.state.deal.gameInfo?.name}!!!!!!s</h4>
         <img src={this.state.deal.gameInfo?.thumb} />
+        
         <h4>Retail Price ${this.state.deal.gameInfo?.retailPrice}</h4>
         <h4>Sale Price ${this.state.deal.gameInfo?.salePrice}</h4>
         <h4>MetaCritic Socre:{this.state.deal.gameInfo?.metacriticScore}</h4>
@@ -47,6 +51,8 @@ class Deal extends Component {
         ) : (
           ""
         )}
+        </MDBCard>
+
       </div>
     );
   }

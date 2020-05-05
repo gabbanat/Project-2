@@ -25,7 +25,7 @@ class Games extends Component {
   render() {
     return (
       <MDBContainer className="tests">
-        <MDBListGroup style={{ width: "22rem" }}>
+        <MDBListGroup >
           {this.showGames()}
         </MDBListGroup>
       </MDBContainer>
