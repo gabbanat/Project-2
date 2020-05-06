@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Game = (props) => {
   return (
     <MDBListGroupItem>
-      <h4>{props.internalName}</h4>
+      <h4>{props.title}</h4>
       <img src={props.thumb} />
 
       <h4>${props.salePrice}</h4>

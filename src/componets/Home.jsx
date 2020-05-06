@@ -5,8 +5,8 @@ class Home extends Component {
         return (
             
             <div className= "home">
-            <h4>WELCOME TO IRON GAMES!!</h4>
-
+            <h1>WELCOME TO IRON GAMES!!</h1>
+                
             </div>
             
                 
