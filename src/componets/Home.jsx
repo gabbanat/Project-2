@@ -5,10 +5,11 @@ class Home extends Component {
         return (
             
             <div className= "home">
-            <h1>WELCOME TO IRON GAMES</h1>
-            
+            <h4>WELCOME TO IRON GAMES!!</h4>
+
             </div>
-        
+            
+                
         );
     }
 }
